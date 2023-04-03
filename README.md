@@ -48,4 +48,8 @@ Spillede Spilklubspil arrangeret efter hvor gode de er
 - Thumper
 - Tunic
 - Turnip Boy commits tax evasion
-
+- Roadwarden (ik gamepass)
+- Dyson Sphere Program
+- Hardspace Shipbreaker
+- Omori
+- Enter the Matrix
