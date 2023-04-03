@@ -33,23 +33,24 @@ Spillede Spilklubspil arrangeret efter hvor gode de er
 
 
 # Potentielle kandidater
+
 - Ben 10: Power Trip
 - Coffee Talk
 - Cruelty Squad (kræver $$$)
 - Cybercontrol
 - Deathloop
+- Dyson Sphere Program
+- Enter the Matrix
 - Garda
 - Garden story
 - Ghost Song (Metroidvania, Game Pass)
 - Grounded
+- Hardspace Shipbreaker
 - Moonglow bay
+- Omori
+- Roadwarden (ik gamepass)
 - Rush: A DisneyPixar Adventure
 - The Murder of Sonic the Hedgehog
 - Thumper
 - Tunic
 - Turnip Boy commits tax evasion
-- Roadwarden (ik gamepass)
-- Dyson Sphere Program
-- Hardspace Shipbreaker
-- Omori
-- Enter the Matrix
