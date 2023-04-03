@@ -23,9 +23,10 @@ Spillede Spilklubspil arrangeret efter hvor gode de er
 13. Atomic Heart
 14. Operation: Tango
 15. Pupperazzi
-16. Dicey Dungeons
-17. Matematik i Måneby
-18. Call of the Sea
+16. Furi
+17. Dicey Dungeons
+18. Matematik i Måneby
+19. Call of the Sea
 
 
 ∞. Breathedge
