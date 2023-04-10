@@ -26,6 +26,7 @@ Spillede Spilklubspil arrangeret efter hvor gode de er
 16. Furi
 17. Dicey Dungeons
 18. Matematik i Måneby
+19. Rush™: A DisneyPixar™ Adventure™
 19. Call of the Sea
 
 
@@ -49,7 +50,6 @@ Spillede Spilklubspil arrangeret efter hvor gode de er
 - Moonglow bay
 - Omori
 - Roadwarden (ik gamepass)
-- Rush: A DisneyPixar Adventure
 - The Murder of Sonic the Hedgehog
 - Thumper
 - Tunic
