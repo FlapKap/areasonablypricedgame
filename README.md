@@ -21,13 +21,14 @@ Spillede Spilklubspil arrangeret efter hvor gode de er
 11. The Pedestrian
 12. SABLE
 13. Atomic Heart
-14. Operation: Tango
-15. Pupperazzi
-16. Furi
-17. Dicey Dungeons
-18. Matematik i Måneby
-19. Rush™: A DisneyPixar™ Adventure™
-19. Call of the Sea
+14. Garden Story
+15. Operation: Tango
+16. Pupperazzi
+17. Furi
+18. Dicey Dungeons
+19. Matematik i Måneby
+20. Rush™: A DisneyPixar™ Adventure™
+21. Call of the Sea
 
 
 ∞. Breathedge
