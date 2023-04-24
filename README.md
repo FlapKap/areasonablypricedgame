@@ -1,10 +1,16 @@
 # a Reasonably Priced Game
 
-## Nuværende spil
+## Nuværende spil (valgt af Jon)
+Star Fox 64
 
-Furi
+## Next Up
+1. Mathias
+2. Kasper
+3. Morten
+4. Mads
+5. Jon
 
-# Rangliste
+## Rangliste
 
 Spillede Spilklubspil arrangeret efter hvor gode de er
 
