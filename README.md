@@ -13,8 +13,6 @@ Mange forsøg er blevet gjort. Men aldrig har vi været tættere på noget ægte
 3. Importér gammel liste ind i database ✔
 4. Lav CSS stylesheet til hjemmesiden ☣☣☣ (✔)
 5. Definér spilkomponent (✔)
-6. Lav side til egen list med mulighed for at tilføje spil fra den globale liste og fra IGDB og rangering af spil.
+6. Lav side til egen list med mulighed for at tilføje spil fra den globale liste og fra IGDB og rangering af spil. (halvt færdig, ingen måde at tilføje spil fra IGDB pt).
 7. Lav side til at vise alle andre brugere.
 8. Lav side til at vise andre brugeres scores.
-
-
