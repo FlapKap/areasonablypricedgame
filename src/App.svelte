@@ -40,6 +40,9 @@
     {:else}
         <div class="segment">
             <h1 class="pad-extra">Flapkap's Spilklub</h1>
+            <div class="pad-extra" style="display: inline-block; text-align: center; padding:1em;">
+                {@html message ?? ""}
+            </div>
             <div style="display: inline-block">
                 <nav class="navbar">
                     <a class="navlink" href="#" on:click={() => {$nav = "Main List"}}>Main List</a>
@@ -49,9 +52,6 @@
                         <button class="navlink" on:click={logOut}>Log out</button>
                     {/if}
                 </nav>
-            </div>
-            <div style="display: inline-block">
-                {@html message ?? ""}
             </div>
         </div>
         <br>

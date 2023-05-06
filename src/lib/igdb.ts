@@ -8,8 +8,6 @@ const memo = {
     token: null
 };
 
-const delay = ms => new Promise(res => setTimeout(res, ms));
-
 async function getSecrets(): Promise<{ IGDBClientID: string, IGDBClientSecret: string }> {
     if (!currentUser) throw Error("No user!");
     if (!!memo.secrets) return memo.secrets;
@@ -79,6 +77,4 @@ export async function getCoverUrl(game_url: string): Promise<string> {
     return url
 }
 
-export async function getGame(game_url: string) {
 
-}

@@ -26,6 +26,10 @@ export default defineConfig({
             startup: true,
             name: "generate typings",
             run: ["npx", "pocketbase-typegen", "--db", "bin/pb_data/data.db", "--out", "src/lib/pocketbase-types.ts"]
+        }, {
+            startup: true,
+            name: "start pb",
+            run: ["./pocketbase.exe", "serve"]
         }]),
     ]
 })
