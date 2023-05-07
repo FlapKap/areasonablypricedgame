@@ -28,7 +28,8 @@ export let extraMargins = false;
     on:drop
     on:dragover|preventDefault
     draggable={draggable ? "true" : "false"}
-    on:dblclick={() => {window.location = game.igdb_url}}
+    on:dblclick={() => {window.open(game.igdb_url)}}
+    title="{game.name}"
 >
     <h2
         style="max-width: 100%; margin-left: 0;white-space: nowrap; text-overflow: ellipsis; {draggable ? 'user-select: none' : ''}"

@@ -6,9 +6,9 @@
 
     let list: ListGame[] = [];
 
-    function reduceListToAverages(
+    async function reduceListToAverages(
         allListItems: ListGame[]
-    ): ListGame[] {
+    ): Promise<ListGame[]> {
         const averagedPositions = allListItems.reduce((acc, item) => {
             if (acc.has(item.game.id)) {
                 const entry = acc.get(item.game.id);
@@ -43,7 +43,7 @@
     async function populateList() {
         if (list.length === 0) {
             const allItems = await getAllListGames();
-            list = reduceListToAverages(allItems);
+            list = await reduceListToAverages(allItems);
         }
     }
 
