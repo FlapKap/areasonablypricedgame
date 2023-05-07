@@ -12,6 +12,7 @@
     import ListItem from "../components/ListItem.svelte";
     import type { Writable } from "svelte/store";
     import { writable } from "svelte/store";
+    import { delay } from "../lib/delay";
 
 
     let listItems: Writable<ListGame[]> = writable([]);
@@ -59,10 +60,11 @@
     async function dropOnListGame(target: ListGame, targetIndex: number) {
         const params = dragParams;
         if (params.source === "games") {
-            await dropInList();
+            // Wait for the dropInList-handler to finish, then move the listItem's position.
+            await delay(100);
             params.sourceIndex = $listItems.length - 1;
         }
-        console.log(`Moving game ${params.sourceIndex} -> ${targetIndex}`);
+        console.log(`Displacing games: ${params.sourceIndex} -> ${targetIndex}`);
         listItems.update(array => {
             const arr = displace(array, params.sourceIndex, targetIndex);
             const promises = [];
@@ -81,6 +83,7 @@
     async function dropInList() {
         const params = dragParams;
         if (params.source === "games") {
+            console.log("game dropped in list!!!");
             games.update(it => {
                 it.splice(params.sourceIndex, 1);
                 return it;
@@ -170,7 +173,7 @@
     <div
         id="dropzone"
         class={listEmpty ? 'empty' : ''}
-        on:drop={async (event) => { event.preventDefault(); await dropInList(); event.stopPropagation(); } }
+        on:drop={async (event) => { await dropInList(); event.stopPropagation(); } }
         on:dragover|preventDefault
     >
         {#if listEmpty}
@@ -186,7 +189,7 @@
                     draggable={true}
                     compact={true}
                     on:dragstart={async (_) => await dragFromList(listGame, i)}
-                    on:drop={async (event) => { event.preventDefault(); await dropOnListGame(listGame, i); event.stopPropagation();}}
+                    on:drop={async (event) => { await dropOnListGame(listGame, i); event.stopPropagation();}}
                     on:dragover={(event) => event.preventDefault()}
                 />
             {/each}

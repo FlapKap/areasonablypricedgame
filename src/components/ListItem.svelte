@@ -10,8 +10,8 @@
 export let position: number = 0.0;
 export let game: {
     name: string,
-    igdb_url: string,
-    cover_art: string
+    igdb_url?: string,
+    cover_art?: string
 } | null = null;
 
 export let compact = false;

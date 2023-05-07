@@ -47,7 +47,7 @@
                 <nav class="navbar">
                     <a class="navlink" href="#" on:click={() => {$nav = "Main List"}}>Main List</a>
                     <a class="navlink" href="#" on:click={() => {$nav = "My List"}}>My List</a>
-                    <a class="navlink" href="#" on:click={() => {$nav = "Users"}}>Users</a>
+                    <!-- <a class="navlink" href="#" on:click={() => {$nav = "Users"}}>Users</a> -->
                     {#if !!$currentUser}
                         <button class="navlink" on:click={logOut}>Log out</button>
                     {/if}

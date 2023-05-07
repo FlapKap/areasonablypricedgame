@@ -5,17 +5,16 @@ import { run } from 'vite-plugin-run';
 // https://vitejs.dev/config/
 export default defineConfig({
     server: {
+        https: false,
         proxy: {
             "/token": {
                 target: "https://id.twitch.tv/oauth2/token",
                 changeOrigin: true,
-                secure: false,
                 rewrite: (path) => path.replace(/^\/token/, '')
             },
             "/igdb": {
                 target: "https://api.igdb.com/v4",
                 changeOrigin: true,
-                secure: false,
                 rewrite: (path) => path.replace(/^\/igdb/, '')
             }
         }

@@ -34,9 +34,10 @@ export async function getAllListGames(userId: string | null = null): Promise<Lis
             game
         } as ListGame;
     })));
-    cache.set(userId, allListGames);
-    setTimeout(() => {
-        cache.delete(userId);
-    }, 60_000)
+    allListGames.sort((a, b) => (a.position ?? Number.MAX_VALUE) - (b.position ?? Number.MAX_VALUE));
+    // cache.set(userId, allListGames);
+    // setTimeout(() => {
+    //     cache.delete(userId);
+    // }, 60_000)
     return allListGames;
 }

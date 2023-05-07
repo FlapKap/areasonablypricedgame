@@ -12,6 +12,6 @@
     draggable="true"
     title={game.name}
     src={game.cover_art}
-    style="display: inline-block; height: 5em; width: 7em; border-radius: 50%"
+    style="display: inline-block; height: 5em; width: 5em; border-radius: 50%"
     alt={game.name}
 >
