@@ -1,14 +1,14 @@
 # a Reasonably Priced Game
 
-## Nuværende spil (valgt af Mathias)
-The Room
+## Nuværende spil (valgt af Kasper)
+Before your eyes
 
 ## Next Up
-1. Kasper
-2. Morten
-3. Mads
-4. Jon
-5. Mathias
+1. Morten
+2. Mads
+3. Jon
+4. Mathias
+5. Kasper
 
 ## Rangliste
 
@@ -27,15 +27,16 @@ Spillede Spilklubspil arrangeret efter hvor gode de er
 11. The Pedestrian
 12. SABLE
 13. Star Fox 64
-14. Atomic Heart
-15. Garden Story
-16. Operation: Tango
-17. Pupperazzi
-18. Furi
-19. Dicey Dungeons
-20. Matematik i Måneby
-21. Rush™: A DisneyPixar™ Adventure™
-22. Call of the Sea
+14. The Room
+15. Atomic Heart
+16. Garden Story
+17. Operation: Tango
+18. Pupperazzi
+19. Furi
+20. Dicey Dungeons
+21. Matematik i Måneby
+22. Rush™: A DisneyPixar™ Adventure™
+23. Call of the Sea
 
 
 ∞. Breathedge
