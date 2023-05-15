@@ -1,14 +1,14 @@
 # a Reasonably Priced Game
 
-## Nuværende spil (valgt af Kasper)
-Before your eyes
+## Nuværende spil (valgt af Morten)
+Monster Hunter Rise
 
 ## Next Up
-1. Morten
-2. Mads
-3. Jon
-4. Mathias
-5. Kasper
+1. Mads
+2. Jon
+3. Mathias
+4. Kasper
+5. Morten
 
 ## Rangliste
 
