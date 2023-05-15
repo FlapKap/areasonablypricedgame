@@ -20,23 +20,24 @@ Spillede Spilklubspil arrangeret efter hvor gode de er
 4. Death's Door
 5. Metal Gear Solid
 6. pentiment
-7. The Medium
-8. Hylics 1 & 2
-9. Telling Lies
-10. The Good Life
-11. The Pedestrian
-12. SABLE
-13. Star Fox 64
-14. The Room
-15. Atomic Heart
-16. Garden Story
-17. Operation: Tango
-18. Pupperazzi
-19. Furi
-20. Dicey Dungeons
-21. Matematik i Måneby
-22. Rush™: A DisneyPixar™ Adventure™
-23. Call of the Sea
+7. Before your Eyes
+8. The Medium
+9. Hylics 1 & 2
+10. Telling Lies
+11. The Good Life
+12. The Pedestrian
+13. SABLE
+14. Star Fox 64
+15. The Room
+16. Atomic Heart
+17. Garden Story
+18. Operation: Tango
+19. Pupperazzi
+20. Furi
+21. Dicey Dungeons
+22. Matematik i Måneby
+23. Rush™: A DisneyPixar™ Adventure™
+24. Call of the Sea
 
 
 ∞. Breathedge
