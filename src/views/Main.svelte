@@ -4,6 +4,8 @@
     import { getAllListGames } from "../lib/list";
     import type { ListGame } from "../lib/list";
 
+    export let compact: boolean = false;
+
     let list: ListGame[] = [];
 
     async function reduceListToAverages(
@@ -52,13 +54,17 @@
     });
 </script>
 
-<div class="segment column" style="height: 80vh;overflow-y: scroll">
-    {#each list as item}
+<div class="segment column { compact ? "ten-wide" : ""}" style="height: { compact ? "40vh" : "80vh"};overflow-y: scroll; resize: vertical">
+    {#if list.length === 0}
+        <h1>Loading list...</h1>
+    {:else}
+        {#each list as item}
         <ListItem
-            position={item.position}
-            game={item.game}
+        position={item.position}
+        game={item.game}
         />
-    {/each}
+        {/each}
+    {/if}
 </div>
 
 
