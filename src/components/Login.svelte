@@ -17,8 +17,8 @@
                 email,
                 password
             )).record as UsersResponse;
-            console.log(JSON.stringify(user));
-            console.log("verified?", user.verified);
+            // console.log(JSON.stringify(user));
+            // console.log("verified?", user.verified);
             if (!user.verified) {
                 await pb.collection("users").requestVerification(email);
                 pb.authStore.clear();

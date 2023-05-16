@@ -19,5 +19,6 @@ export async function getAllGames(): Promise<GamesResponse[]> {
     }
     const games = await pb.collection(Collections.Games)
         .getFullList(2048, query);
+    // console.log(games);
     return await sequentialMap(games, addCoverArtToGame);
 }

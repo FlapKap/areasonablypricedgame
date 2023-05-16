@@ -2,6 +2,7 @@ import { pb } from "./pocketbase";
 import type { GamesResponse, ListItemsResponse } from "./pocketbase-types";
 import { Collections } from "./pocketbase-types";
 import { addCoverArtToGame } from "./games";
+import { delay } from "./delay.js";
 
 export type ListGame = {
     id: string,
@@ -26,18 +27,22 @@ export async function getAllListGames(userId: string | null = null): Promise<Lis
         2048,
         query
     ) as ListItemsResponse<{ game: GamesResponse }>[];
-    const allListGames = await (Promise.all(listItems.map(async it => {
+    const allListGames = [];
+    for (const it of listItems) {
+        if (!it.expand.game) {
+            it.expand.game = await pb.collection(Collections.Games).getOne(it.game, {$autoCancel: false});
+        }
         const game = await addCoverArtToGame(it.expand.game);
-        return {
+        allListGames.push({
             id: it.id,
             position: it.position,
             game
-        } as ListGame;
-    })));
+        } as ListGame);
+    }
     allListGames.sort((a, b) => (a.position ?? Number.MAX_VALUE) - (b.position ?? Number.MAX_VALUE));
-    // cache.set(userId, allListGames);
-    // setTimeout(() => {
-    //     cache.delete(userId);
-    // }, 60_000)
+    cache.set(userId, allListGames);
+    setTimeout(() => {
+        cache.delete(userId);
+    }, 60_000)
     return allListGames;
 }
