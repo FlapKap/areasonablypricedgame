@@ -54,7 +54,7 @@
     });
 </script>
 
-<div class="segment column { compact ? "ten-wide" : ""}" style="height: { compact ? "40vh" : "80vh"};overflow-y: scroll; resize: vertical">
+<div class="segment column fourteen-wide" style="height: { compact ? "40vh" : "80vh"};overflow-y: scroll; resize: vertical">
     {#if list.length === 0}
         <h1>Loading list...</h1>
     {:else}

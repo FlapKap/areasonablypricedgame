@@ -4,9 +4,9 @@
     import Field from "./Field.svelte";
 
     async function resend() {
-        console.log($currentUser);
+        // console.log($currentUser);
         const email = ($currentUser as any).email;
-        console.log("Sending user verification code to email:", email);
+        // console.log("Sending user verification code to email:", email);
         await pb.collection("users").requestVerification(email);
     }
 

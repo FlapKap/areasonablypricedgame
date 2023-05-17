@@ -57,12 +57,13 @@
 
 <div>
     <form
-        class={"ten-wide segment " + (errorMessage.length > 0 ? "error" : "")}
+        class={"fourteen-wide segment " + (errorMessage.length > 0 ? "error" : "")}
         on:submit|preventDefault
     >
-        <h1>Spilklubben - Login</h1>
+        <h1 style="margin-bottom: 0.5rem;">Spilklubben - Login</h1>
         <hr>
         <Field
+            classes="fourteen-wide"
             name="email"
             label={mode === "In" ? "Email / Username" : "Email"}
             placeholder="your@email.com"
@@ -71,6 +72,7 @@
         />
         {#if mode === "Up"}
             <Field
+                classes="fourteen-wide"
                 name="username"
                 label="Username"
                 placeholder="username"
@@ -79,6 +81,7 @@
             />
         {/if}
         <Field
+            classes="fourteen-wide"
             label="Password"
             placeholder="********"
             name="password"
@@ -88,6 +91,7 @@
         />
         {#if mode === "Up"}
             <Field
+                classes="fourteen-wide"
                 label="Repeat password"
                 placeholder="********"
                 name="password2"
@@ -102,8 +106,8 @@
                 <p>{errorMessage}</p>
             </div>
         {/if}
-        <button class="four-wide float-left" on:click={submit}>Sign {mode}</button>
-        <div class="float-right" style="display: inline-block">
+        <button class="four-wide float-left" style="padding: 8px 16px; margin-left: 2rem;" on:click={submit}>Sign {mode}</button>
+        <div class="float-right" style="margin-right: 2rem;">
             {#if mode === "Up"}
                 <a
                     href="#"

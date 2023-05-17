@@ -53,6 +53,7 @@ async function getToken() {
 }
 
 export async function getCoverUrl(game_url: string): Promise<string> {
+    
   if (localStorage.getItem(`${storage_ns}_${game_url}`)) {
     return localStorage.getItem(`${storage_ns}_${game_url}`)!;
   }

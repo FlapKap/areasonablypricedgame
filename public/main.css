@@ -15,7 +15,7 @@ title {
 }
 
 /* Reset */
-* {
+:not(head):not(head *) {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -304,15 +304,16 @@ button:hover {
 }
 
 .float-left {
-    margin-left: unset;
+    margin-left: 0.1rem;
     margin-right: auto;
-    float: left;
+    /* float: left; */
 }
 
 .float-right {
-    margin-right: unset;
+    margin-right: 0.1rem;
     margin-left: auto;
-    float: right;
+    /* float: right; */
+    text-align: right;
 }
 
 .pad-extra {

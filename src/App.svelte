@@ -45,12 +45,12 @@
         await pb.authStore.clear();
     }
 </script>
-<div class="ten-wide">
+<div class="sixteen-wide">
     {#if !$currentUser || !$currentUser.verified}
         <Login/>
         <Main compact={true}/>
     {:else}
-        <div class="segment">
+        <div class="segment fourteen-wide">
             <h1 class="pad-extra">Flapkap's Spilklub</h1>
             <div class="pad-extra" style="display: inline-block; text-align: center; padding:1em;">
                 {@html message ?? ""}

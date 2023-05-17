@@ -64,7 +64,7 @@
             await delay(100);
             params.sourceIndex = $listItems.length - 1;
         }
-        console.log(`Displacing games: ${params.sourceIndex} -> ${targetIndex}`);
+        // console.log(`Displacing games: ${params.sourceIndex} -> ${targetIndex}`);
         listItems.update(array => {
             const arr = displace(array, params.sourceIndex, targetIndex);
             const promises = [];
@@ -83,7 +83,7 @@
     async function dropInList() {
         const params = dragParams;
         if (params.source === "games") {
-            console.log("game dropped in list!!!");
+            // console.log("game dropped in list!!!");
             games.update(it => {
                 it.splice(params.sourceIndex, 1);
                 return it;
@@ -105,7 +105,7 @@
                 return it;
             });
         } else if (params.source === "list") {
-            console.log("dropped in list!!!");
+            // console.log("dropped in list!!!");
             listItems.update(it => {
                 it.splice(params.sourceIndex, 1);
                 return it;
@@ -153,7 +153,7 @@
     });
 
 </script>
-<div class="segment">
+<div class="segment fourteen-wide">
     <div
         class="sixteen-wide"
         style="height: 15vh; overflow: auto; margin-bottom: 1em"
@@ -169,7 +169,7 @@
         {/each}
     </div>
 </div>
-<div class="segment column">
+<div class="segment column fourteen-wide">
     <div
         id="dropzone"
         class={listEmpty ? 'empty' : ''}

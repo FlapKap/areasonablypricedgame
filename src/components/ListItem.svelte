@@ -21,7 +21,7 @@ export let extraMargins = false;
 </script>
 
 <div
-    class="segment column {compact ? 'four-wide' : 'eight-wide'}"
+    class="segment column {compact ? 'four-wide' : 'ten-wide'}"
     style="cursor: pointer; display: inline-block; margin-bottom: {extraMargins ? '1em' : '1rem'}"
     data-value="{position}"
     on:dragstart
