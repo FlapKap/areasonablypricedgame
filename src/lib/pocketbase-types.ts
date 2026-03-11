@@ -6,6 +6,7 @@ export enum Collections {
 	BillboardPosts = "billboard_posts",
 	Games = "games",
 	ListItems = "list_items",
+	NowPlaying = "now_playing",
 	Secrets = "secrets",
 	Users = "users",
 }
@@ -52,6 +53,13 @@ export type ListItemsRecord = {
 	position?: number
 }
 
+export type NowPlayingRecord = {
+	it_user?: RecordIdString
+	game?: RecordIdString
+}
+
+export type NowPlayingResponse<Texpand = unknown> = Required<NowPlayingRecord> & BaseSystemFields<Texpand>
+
 export type SecretsRecord<Tcontent = unknown> = {
 	name?: string
 	content?: null | Tcontent
@@ -75,6 +83,7 @@ export type CollectionRecords = {
 	billboard_posts: BillboardPostsRecord
 	games: GamesRecord
 	list_items: ListItemsRecord
+	now_playing: NowPlayingRecord
 	secrets: SecretsRecord
 	users: UsersRecord
 }
@@ -83,6 +92,7 @@ export type CollectionResponses = {
 	billboard_posts: BillboardPostsResponse
 	games: GamesResponse
 	list_items: ListItemsResponse
+	now_playing: NowPlayingResponse
 	secrets: SecretsResponse
 	users: UsersResponse
 }

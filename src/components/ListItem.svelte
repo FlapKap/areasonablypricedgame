@@ -1,10 +1,6 @@
 <script lang="ts">/**
  * Represents a game as a list item.
- * Should display:
- * - A picture of the cover art (if any)
- * - The game's title.
- * - The game's global 🌍 ranking.
- * - The user's 👍 ranking of the game.
+ * Displays cover art, rank, and title in a horizontal card.
  */
 
 export let position: number = 0.0;
@@ -21,22 +17,98 @@ export let extraMargins = false;
 </script>
 
 <div
-    class="segment column {compact ? 'four-wide' : 'ten-wide'}"
-    style="cursor: pointer; display: inline-block; margin-bottom: {extraMargins ? '1em' : '1rem'}"
+    class="list-card"
+    class:compact
+    class:extra-margins={extraMargins}
     data-value="{position}"
     on:dragstart
     on:drop
     on:dragover|preventDefault
     draggable={draggable ? "true" : "false"}
-    on:dblclick={() => {window.open(game.igdb_url)}}
-    title="{game.name}"
+    on:dblclick={() => { if (game?.igdb_url) window.open(game.igdb_url) }}
+    title="{game?.name}"
 >
-    <h2
-        style="max-width: 100%; margin-left: 0;white-space: nowrap; text-overflow: ellipsis; {draggable ? 'user-select: none' : ''}"
-    >{position + 1.0} - {game.name}</h2>
-    {#if !!game.cover_art}
-        <img src="{game.cover_art}" alt="{game.name}"
-             style="width: 10em; height: 14em; margin-top: 1rem; margin-left: auto; margin-right: auto"
-        >
+    <span class="rank">{position + 1}</span>
+    {#if game?.cover_art}
+        <img class="cover" src="{game.cover_art}" alt="{game.name}">
+    {:else}
+        <div class="cover cover-empty"></div>
     {/if}
+    <span class="title" style={draggable ? 'user-select: none' : ''}>{game?.name}</span>
 </div>
+
+<style>
+    .list-card {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.6rem 1rem;
+        background-color: var(--card-bg);
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+        cursor: pointer;
+        transition: border-color 0.15s ease, background-color 0.15s ease;
+        width: 100%;
+        break-inside: avoid;
+        margin-bottom: 0.5rem;
+    }
+
+    .list-card:hover {
+        border-color: rgba(157, 111, 255, 0.35);
+        background-color: rgba(157, 111, 255, 0.06);
+    }
+
+    .extra-margins {
+        margin-bottom: 1rem;
+    }
+
+    .rank {
+        font-size: 1.1rem;
+        font-weight: 700;
+        min-width: 2.25rem;
+        text-align: right;
+        opacity: 0.45;
+        flex-shrink: 0;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .cover {
+        width: 2.8rem;
+        height: 3.8rem;
+        object-fit: cover;
+        border-radius: 4px;
+        flex-shrink: 0;
+    }
+
+    .cover-empty {
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .title {
+        font-size: 1rem;
+        font-weight: 500;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .compact {
+        padding: 0.4rem 0.75rem;
+    }
+
+    .compact .cover {
+        width: 2rem;
+        height: 2.75rem;
+    }
+
+    .compact .title {
+        font-size: 0.9rem;
+    }
+
+    .compact .rank {
+        font-size: 0.95rem;
+    }
+</style>

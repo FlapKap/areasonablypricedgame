@@ -1,18 +1,47 @@
-# Spilklubben, nu i Svelte
+# Spilklubben
 
-Mange forsøg er blevet gjort. Men aldrig har vi været tættere på noget ægte.
+A web app for Flapkap's Games Club (Spilklubben) — track, rate, and browse a shared games list.
 
-## TODO
+## Stack
 
-1. Forbind til IGDB ✔
-   1. Authenticate med twitch vha client id og client secret (gemt bag auth-lag til database) ✔
-   2. Hent cover-billeder fra IGDB ✔
-   3. Hent summaries fra IGDB ✔
-   4. Hent review-scores og community scores fra IGDB
-2. Opsæt database til at opbevare folks lister ✔
-3. Importér gammel liste ind i database ✔
-4. Lav CSS stylesheet til hjemmesiden ☣☣☣ (✔)
-5. Definér spilkomponent (✔)
-6. Lav side til egen list med mulighed for at tilføje spil fra den globale liste og fra IGDB og rangering af spil. (halvt færdig, ingen måde at tilføje spil fra IGDB pt).
-7. Lav side til at vise alle andre brugere.
-8. Lav side til at vise andre brugeres scores.
+- [Svelte](https://svelte.dev/) + TypeScript, built with [Vite](https://vitejs.dev/)
+- [PocketBase](https://pocketbase.io/) for the backend/database
+- [IGDB](https://www.igdb.com/api) for game metadata (covers, summaries), authenticated via Twitch OAuth
+
+## Development
+
+Install dependencies:
+
+```sh
+npm install
+```
+
+Start the dev server (runs on port 7163):
+
+```sh
+npm run dev
+```
+
+The dev server proxies `/token` to the Twitch OAuth endpoint and `/igdb` to the IGDB API, so credentials are not exposed to the browser.
+
+## Building
+
+To build for production into the `dist/` directory:
+
+```sh
+npm run build
+```
+
+To preview the production build locally:
+
+```sh
+npm run preview
+```
+
+## Other commands
+
+```sh
+npm run check     # Svelte type checking
+npm run test      # Run tests with vitest
+npm run coverage  # Run tests with coverage report
+```

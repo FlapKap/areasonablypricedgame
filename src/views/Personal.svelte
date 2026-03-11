@@ -31,6 +31,7 @@
     let listEmpty = true;
 
     async function removeFromList() {
+        if (dragParams?.source !== "list") return;
         const params = dragParams;
         games.update(it => {
             it.push(params.game);
@@ -153,46 +154,48 @@
     });
 
 </script>
-<div class="segment fourteen-wide">
+<div class="personal-layout">
     <div
-        class="sixteen-wide"
-        style="height: 15vh; overflow: auto; margin-bottom: 1em"
+        class="segment games-pool"
         on:drop={removeFromList}
         on:dragover={(event) => event.preventDefault()}
     >
-        {#each $games as game, i}
-            <GameCard
-                game={game}
-                on:dragstart={async (_) => await dragFromGames(game, i)}
-                on:dragover={(event) => event.preventDefault()}
-            />
-        {/each}
-    </div>
-</div>
-<div class="segment column fourteen-wide">
-    <div
-        id="dropzone"
-        class={listEmpty ? 'empty' : ''}
-        on:drop={async (event) => { await dropInList(); event.stopPropagation(); } }
-        on:dragover|preventDefault
-    >
-        {#if listEmpty}
-            <p style="text-align: center; margin-top: 25vh; font-size: xx-large">
-                Drop games here to begin ranking them!
-            </p>
-        {:else}
-            {#each $listItems as listGame, i}
-                <ListItem
-                    position={i}
-                    game={listGame.game}
-                    extraMargins={true}
-                    draggable={true}
-                    compact={true}
-                    on:dragstart={async (_) => await dragFromList(listGame, i)}
-                    on:drop={async (event) => { await dropOnListGame(listGame, i); event.stopPropagation();}}
+        <p class="pool-title">Add Games</p>
+        <div class="pool-scroll">
+            {#each $games as game, i}
+                <GameCard
+                    game={game}
+                    on:dragstart={async (_) => await dragFromGames(game, i)}
                     on:dragover={(event) => event.preventDefault()}
                 />
             {/each}
-        {/if}
+        </div>
+    </div>
+    <div class="segment column list-section">
+        <div
+            id="dropzone"
+            class="{listEmpty ? 'empty' : 'game-grid'}"
+            on:drop={async (event) => { await dropInList(); event.stopPropagation(); }}
+            on:dragover|preventDefault
+        >
+            {#if listEmpty}
+                <p style="text-align: center; margin-top: 10vh; font-size: xx-large">
+                    Drop games here to begin ranking them!
+                </p>
+            {:else}
+                {#each $listItems as listGame, i}
+                    <ListItem
+                        position={i}
+                        game={listGame.game}
+                        extraMargins={true}
+                        draggable={true}
+                        compact={true}
+                        on:dragstart={async (_) => await dragFromList(listGame, i)}
+                        on:drop={async (event) => { await dropOnListGame(listGame, i); event.stopPropagation();}}
+                        on:dragover={(event) => event.preventDefault()}
+                    />
+                {/each}
+            {/if}
+        </div>
     </div>
 </div>

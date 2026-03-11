@@ -3,70 +3,64 @@
     import Login from "./components/Login.svelte";
     import { nav } from "./lib/navigation";
     import { currentUser } from "./lib/pocketbase";
-    import Verify from "./components/Verify.svelte";
     import { onMount } from "svelte";
     // import { DateTime } from "luxon";
     import Views from "./views/Views.svelte";
     import Main from "./views/Main.svelte";
-    import { Collections } from "./lib/pocketbase-types";
+    import NowPlaying from "./components/NowPlaying.svelte";
 
-    // let backgroundImage: string;
-    let message: string;
-
-    // const backgrounds = [
-    //     '2cd5bdb780bca4694ecdf4232bc5337ca264bb0ec449636257342404.png',
-    //     '4bb34647e55b0ed9d33122cbfbcb84848e54227adb7736a62b65cf65.png',
-    //     '6fabe26c88d802b25f89b6ef54ce5d9c879713cdf0eeea1f96adad27.png',
-    //     '15d6f5295319d33bcf3d499171fee5670c31132f169f6919099a56a2.png',
-    //     'ca2aa9fa4bcf9cbd0c2cf6babe5fb03f25483decfca2e6de2867405a.png',
-    //     'e1c4b0151472ed02661ae6087cf35435fa6478fbcb3c8f956e203426.png',
-    //     'f18f7deee360f27c067bae3165146bae013f461ae06f027c2b733d66.png',
-    //     'fba1cd118d8234da4db9b6511b1b64c51a1ca515114dcbb183058b40.png'
-    // ];
+    let showLogin = false;
+    let landingNpState: any = null;
 
     onMount(async () => {
-        // Disable the rolling backgrounds for now...
-        // const dt = DateTime.now();
-        // const r = dt.day / dt.daysInMonth;
-        // const background = backgrounds[Math.trunc(r * backgrounds.length)];
-        // backgroundImage = `/backgrounds/${background}`;
-        // document.body.style.backgroundSize = "auto";
-        // document.body.style.backgroundImage = `url(${backgroundImage})`;
-        // document.body.style.backgroundSize = 'cover';
-        document.body.style.background = "#543d8b"
-        await pb.collection("users").authRefresh();
-        const post = await pb.collection(Collections.BillboardPosts).getFirstListItem('display=true', {
-            $autoCancel: false
-        });
-        message = post.message;
+        try {
+            await pb.collection("users").authRefresh();
+        } catch (_) {
+            pb.authStore.clear();
+        }
     });
 
     async function logOut() {
         await pb.authStore.clear();
     }
 </script>
-<div class="sixteen-wide">
-    {#if !$currentUser || !$currentUser.verified}
-        <Login/>
-        <Main compact={true}/>
-    {:else}
-        <div class="segment fourteen-wide">
-            <h1 class="pad-extra">Flapkap's Spilklub</h1>
-            <div class="pad-extra" style="display: inline-block; text-align: center; padding:1em;">
-                {@html message ?? ""}
+<svelte:window on:keydown={(e) => { if (e.key === 'Escape') showLogin = false; }}/>
+{#if !$currentUser || !$currentUser.verified}
+    <div class="landing-page">
+        <div class="landing-grid">
+            <div class="landing-left">
+                <div class="segment landing-hero">
+                    <h1>Flapkap's Spilklub</h1>
+                    <p>A private board game club's collective list — browse games rated and ranked by members. Sign in to add your own ratings.</p>
+                    <button class="cta-btn" on:click={() => showLogin = true}>Sign in</button>
+                    {#if landingNpState}<hr/>{/if}
+                    <NowPlaying bind:state={landingNpState}/>
+                </div>
             </div>
-            <div style="display: inline-block">
-                <nav class="navbar">
-                    <a class="navlink" href="#" on:click={() => {$nav = "Main List"}}>Main List</a>
-                    <a class="navlink" href="#" on:click={() => {$nav = "My List"}}>My List</a>
-                    <!-- <a class="navlink" href="#" on:click={() => {$nav = "Users"}}>Users</a> -->
-                    {#if !!$currentUser}
-                        <button class="navlink" on:click={logOut}>Log out</button>
-                    {/if}
-                </nav>
+            <div class="landing-right">
+                <Main/>
             </div>
         </div>
-        <br>
-        <Views/>
-    {/if}
-</div>
+        {#if showLogin}
+            <div class="dimmer" on:click={(e) => { if (e.target === e.currentTarget) showLogin = false; }}>
+                <Login/>
+            </div>
+        {/if}
+    </div>
+{:else}
+    <div class="app-layout">
+        <aside class="sidebar">
+            <span class="sidebar-title">Flapkap's Spilklub</span>
+            <nav class="sidebar-nav">
+                <button class="navlink" class:active={$nav === "Main List"} on:click={() => { $nav = "Main List"; }}>Main List</button>
+                <button class="navlink" class:active={$nav === "My List"} on:click={() => { $nav = "My List"; }}>My List</button>
+                <button class="navlink" on:click={logOut}>Log out</button>
+            </nav>
+            <hr/>
+            <NowPlaying/>
+        </aside>
+        <div class="app-content">
+            <Views/>
+        </div>
+    </div>
+{/if}
