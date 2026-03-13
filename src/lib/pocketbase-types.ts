@@ -8,8 +8,17 @@ export enum Collections {
 	ListItems = "list_items",
 	NowPlaying = "now_playing",
 	Secrets = "secrets",
+	UserSettings = "user_settings",
 	Users = "users",
 }
+
+export type ListMode =
+	| "column-grid"
+	| "row-grid"
+	| "list"
+	| "position-drag"
+	| "binary-tree"
+	| "spiral";
 
 // Alias types for improved usability
 export type IsoDateString = string
@@ -65,12 +74,18 @@ export type SecretsRecord<Tcontent = unknown> = {
 	content?: null | Tcontent
 }
 
+export type UserSettingsRecord = {
+	user?: RecordIdString
+	list_mode?: ListMode
+}
+
 export type UsersRecord = {
 	name?: string
 	avatar?: string
 }
 
 // Response types include system fields and match responses from the PocketBase API
+export type UserSettingsResponse = Required<UserSettingsRecord> & BaseSystemFields
 export type BillboardPostsResponse = Required<BillboardPostsRecord> & BaseSystemFields
 export type GamesResponse = Required<GamesRecord> & BaseSystemFields
 export type ListItemsResponse<Texpand = unknown> = Required<ListItemsRecord> & BaseSystemFields<Texpand>
@@ -85,6 +100,7 @@ export type CollectionRecords = {
 	list_items: ListItemsRecord
 	now_playing: NowPlayingRecord
 	secrets: SecretsRecord
+	user_settings: UserSettingsRecord
 	users: UsersRecord
 }
 
@@ -94,5 +110,6 @@ export type CollectionResponses = {
 	list_items: ListItemsResponse
 	now_playing: NowPlayingResponse
 	secrets: SecretsResponse
+	user_settings: UserSettingsResponse
 	users: UsersResponse
 }

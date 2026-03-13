@@ -3,8 +3,11 @@
  * Displays cover art, rank, and title in a horizontal card.
  */
 
+import { dutchTitle } from '../lib/joke';
+
 export let position: number = 0.0;
 export let game: {
+    id?: string,
     name: string,
     igdb_url?: string,
     cover_art?: string
@@ -13,6 +16,10 @@ export let game: {
 export let compact = false;
 export let draggable = false;
 export let extraMargins = false;
+
+$: displayName = ($dutchTitle && game?.id === $dutchTitle.gameId)
+    ? $dutchTitle.name
+    : game?.name;
 
 </script>
 
@@ -26,22 +33,22 @@ export let extraMargins = false;
     on:dragover|preventDefault
     draggable={draggable ? "true" : "false"}
     on:dblclick={() => { if (game?.igdb_url) window.open(game.igdb_url) }}
-    title="{game?.name}"
+    title="{displayName}"
 >
-    <span class="rank">{position + 1}</span>
+    <span class="rank">#{position + 1}</span>
     {#if game?.cover_art}
         <img class="cover" src="{game.cover_art}" alt="{game.name}">
     {:else}
         <div class="cover cover-empty"></div>
     {/if}
-    <span class="title" style={draggable ? 'user-select: none' : ''}>{game?.name}</span>
+    <span class="title" style={draggable ? 'user-select: none' : ''}>{displayName}</span>
 </div>
 
 <style>
     .list-card {
         display: flex;
         flex-direction: row;
-        align-items: center;
+        align-items: flex-start;
         gap: 1rem;
         padding: 0.6rem 1rem;
         background-color: var(--card-bg);
@@ -51,7 +58,6 @@ export let extraMargins = false;
         transition: border-color 0.15s ease, background-color 0.15s ease;
         width: 100%;
         break-inside: avoid;
-        margin-bottom: 0.5rem;
     }
 
     .list-card:hover {
@@ -88,9 +94,6 @@ export let extraMargins = false;
     .title {
         font-size: 1rem;
         font-weight: 500;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
         flex: 1;
         min-width: 0;
     }

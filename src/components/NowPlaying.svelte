@@ -87,7 +87,7 @@
         {:else if needsGame}
             <p class="np-prompt">You're it! Pick the next game:</p>
             {#if showGamePicker}
-                <IgdbSearch on:select={handleGameSelect} />
+                <IgdbSearch modal on:select={handleGameSelect} />
             {:else}
                 <button on:click={() => showGamePicker = true}>Search IGDB…</button>
             {/if}
@@ -234,6 +234,57 @@
     .pass-option:hover {
         background-color: rgba(157, 111, 255, 0.12);
         border-color: var(--accent);
+        filter: none;
+    }
+
+    .modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+    }
+
+    .modal {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        width: min(560px, 90vw);
+        max-height: 80vh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 1.25rem 0.75rem;
+        border-bottom: 1px solid var(--border-color);
+        flex-shrink: 0;
+    }
+
+    .modal-title {
+        font-weight: 600;
+        font-size: 1rem;
+    }
+
+    .modal-close {
+        background: transparent;
+        border: none;
+        color: var(--text-muted);
+        font-size: 1rem;
+        padding: 0;
+        cursor: pointer;
+        line-height: 1;
+    }
+
+    .modal-close:hover {
+        color: var(--text-color);
         filter: none;
     }
 </style>

@@ -6,6 +6,7 @@
 
     const dispatch = createEventDispatcher();
 
+    export let modal = false;
     let query = "";
     let results: Array<{ id: number; name: string; url: string; cover?: number; coverUrl?: string }> = [];
     let loading = false;
@@ -54,14 +55,16 @@
     }
 </script>
 
-<div class="igdb-search">
-    <input
-        type="text"
-        bind:value={query}
-        on:input={onInput}
-        placeholder="Search for a game…"
-        autofocus
-    />
+<div class="igdb-search" class:modal>
+    <div class="search-input-wrap">
+        <input
+            type="text"
+            bind:value={query}
+            on:input={onInput}
+            placeholder="Search for a game…"
+            autofocus
+        />
+    </div>
     {#if loading}
         <p class="search-hint">Searching…</p>
     {:else if results.length > 0}
@@ -73,7 +76,7 @@
                     {:else}
                         <div class="result-cover result-cover-empty"></div>
                     {/if}
-                    <span>{game.name}</span>
+                    <span class="result-name">{game.name}</span>
                 </button>
             {/each}
         </div>
@@ -89,21 +92,51 @@
         gap: 0.5rem;
     }
 
+    /* When used inside a modal, fill the modal and let results scroll */
+    .igdb-search.modal {
+        flex: 1;
+        min-height: 0;
+        overflow: hidden;
+    }
+
+    .search-input-wrap {
+        padding: 0.75rem 1.25rem 0.5rem;
+        flex-shrink: 0;
+    }
+
+    .igdb-search:not(.modal) .search-input-wrap {
+        padding: 0;
+    }
+
+    .igdb-search.modal input {
+        font-size: 1.05rem;
+        padding: 0.6rem 0.9rem;
+    }
+
     .search-results {
         display: flex;
         flex-direction: column;
-        max-height: 280px;
         overflow-y: auto;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .igdb-search:not(.modal) .search-results {
+        max-height: 280px;
         border: 1px solid var(--border-color);
         border-radius: 6px;
         background-color: var(--card-bg);
+    }
+
+    .igdb-search.modal .search-results {
+        flex: 1;
+        min-height: 0;
     }
 
     .search-result {
         display: flex;
         align-items: center;
         gap: 0.75rem;
-        padding: 0.5rem 0.75rem;
+        padding: 0.6rem 1.25rem;
         background: transparent;
         border: none;
         border-radius: 0;
@@ -116,6 +149,10 @@
         width: 100%;
     }
 
+    .igdb-search:not(.modal) .search-result {
+        padding: 0.5rem 0.75rem;
+    }
+
     .search-result:last-child {
         border-bottom: none;
     }
@@ -126,19 +163,36 @@
     }
 
     .result-cover {
-        width: 2rem;
-        height: 2.75rem;
+        width: 2.5rem;
+        height: 3.4rem;
         object-fit: cover;
         border-radius: 3px;
         flex-shrink: 0;
+    }
+
+    .igdb-search:not(.modal) .result-cover {
+        width: 2rem;
+        height: 2.75rem;
     }
 
     .result-cover-empty {
         background: rgba(255, 255, 255, 0.05);
     }
 
+    .result-name {
+        font-size: 0.95rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
     .search-hint {
         font-size: 0.85rem;
         color: var(--text-muted);
+        padding: 0.75rem 1.25rem;
+    }
+
+    .igdb-search:not(.modal) .search-hint {
+        padding: 0;
     }
 </style>

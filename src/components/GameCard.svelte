@@ -9,6 +9,7 @@
     on:dragstart
     on:drop
     on:dragover
+    on:click
     draggable="true"
     title={game.name}
     src={game.cover_art}

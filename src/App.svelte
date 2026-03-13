@@ -8,6 +8,7 @@
     import Views from "./views/Views.svelte";
     import Main from "./views/Main.svelte";
     import NowPlaying from "./components/NowPlaying.svelte";
+    import { maybeSetupJoke } from "./lib/joke";
 
     let showLogin = false;
     let landingNpState: any = null;
@@ -15,6 +16,7 @@
     onMount(async () => {
         try {
             await pb.collection("users").authRefresh();
+            maybeSetupJoke(pb.authStore.model?.id ?? '');
         } catch (_) {
             pb.authStore.clear();
         }

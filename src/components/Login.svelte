@@ -118,6 +118,12 @@
         max-width: 420px;
         margin: 0 auto;
         padding: 2rem;
+        background: var(--card-bg);
+        border-color: rgba(157, 111, 255, 0.25);
+    }
+
+    .login-actions button:not(.link-btn) {
+        padding: 10px 20px;
     }
 
     .login-subtitle {

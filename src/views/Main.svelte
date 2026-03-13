@@ -52,14 +52,31 @@
     });
 </script>
 
-<div class="segment game-grid" style="height: calc(100vh - 3rem); overflow-y: scroll;">
+<div class="segment main-grid">
     {#if list.length === 0}
         <h1>Loading list...</h1>
     {:else}
         {#each list as item}
-            <ListItem position={item.position} game={item.game} />
+            <div class="main-item">
+                <ListItem position={item.position} game={item.game} />
+            </div>
         {/each}
     {/if}
 </div>
+
+<style>
+    .main-grid {
+        columns: 3;
+        column-gap: 1rem;
+    }
+
+    @media (max-width: 1100px) { .main-grid { columns: 2; } }
+    @media (max-width: 600px)  { .main-grid { columns: 1; } }
+
+    .main-item {
+        break-inside: avoid;
+        margin-bottom: 0.4rem;
+    }
+</style>
 
 
